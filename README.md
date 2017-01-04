@@ -15,7 +15,7 @@ For those who have used their free year, there are many educational platforms, i
 
 ![console.cloud.google.com](https://www.cncf.io/wp-content/uploads/2016/11/GCP_logo_vertical_rgb-1-300x185.png)
 
-Google offers a very similar platform to AWS called [Google Cloud Platform](https://console.cloud.google.com). Google offers a similar [trial system](https://cloud.google.com/free-trial/docs/free-trial-quotas) to amazon's offering $300 over the course of a six month period.
+Google offers a very similar platform to AWS called [Google Cloud Platform](https://console.cloud.google.com). Google offers a similar [trial system](https://cloud.google.com/free-trial/docs/free-trial-quotas) to amazon's offering $300 over the course of a six month period. They also provide a [budgeting feature](https://support.google.com/cloud/answer/6293540?hl=en) for their platform.
 
 ### Runtime Environments and Languages
 ![https://nodejs.org/en/download/](https://ih1.redbubble.net/image.109336620.1604/sticker,220x200-pad,220x200,ffffff.u1.jpg)
