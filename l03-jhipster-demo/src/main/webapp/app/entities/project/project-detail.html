@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="hackathonApp.project.detail.title">Project</span> {{vm.project.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="hackathonApp.project.name">Name</span></dt>
+        <dd>
+            <span>{{vm.project.name}}</span>
+        </dd>
+        <dt><span data-translate="hackathonApp.project.type">Type</span></dt>
+        <dd>
+            <span>{{vm.project.type}}</span>
+        </dd>
+        <dt><span data-translate="hackathonApp.project.url">Url</span></dt>
+        <dd>
+            <span>{{vm.project.url}}</span>
+        </dd>
+        <dt><span data-translate="hackathonApp.project.team">Team</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.project.team.id})">{{vm.project.team.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="project-detail.edit({id:vm.project.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

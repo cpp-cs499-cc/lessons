@@ -1,0 +1,25 @@
+{
+    "hackathonApp": {
+        "member" : {
+            "home": {
+                "title": "Members",
+                "createLabel": "Crear nuevo Member",
+                "createOrEditLabel": "Crear o editar Member",
+                "search": "Search for Member"
+            },
+            "created": "Un nuevo Member ha sido creado con el identificador {{ param }}",
+            "updated": "Un Member ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Member ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Member {{ id }}?"
+            },
+            "detail": {
+                "title": "Member"
+            },
+            "name": "Name",
+            "major": "Major",
+            "dateBirth": "Date Birth",
+            "team": "Team"
+        }
+    }
+}

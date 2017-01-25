@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "team",
+            "otherEntityName": "team",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "major",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateBirth",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170125000315",
+    "entityTableName": "member",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

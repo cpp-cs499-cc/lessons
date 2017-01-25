@@ -1,0 +1,20 @@
+entity Team {
+	name String
+}
+
+entity Member {
+	name String,
+    major String,
+    dateBirth ZonedDateTime
+}
+
+entity Project {
+	name String,
+    type String,
+    url String
+}
+
+relationship OneToMany {
+	Team{members} to Member,
+    Team{projects} to Project
+}
