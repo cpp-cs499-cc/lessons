@@ -1,0 +1,16 @@
+{
+  "name": "l04-waittime-dynamodb-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.9.0",
+    "request": "^2.79.0",
+    "xml2js": "^0.4.17"
+  }
+}
