@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title></title>
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+ 
+  	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  	<script type="text/javascript">
+  		function getnext() {
+  			$('#result').text('');
+
+  			var name = $('#nameinput').val();
+  			var group = $('#groupinput').val();
+
+  			$.ajax({
+			  type: "GET",
+			  url: "https://7rpbjy5ht4.execute-api.us-west-1.amazonaws.com/dev/getnext",
+			  success: function( data ) {				  
+				  $('#result').text('Now serving: ' + data.name);
+			  }
+			});
+  		}
+  	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<h3>DMV Window</h3>
+		<button class="btn btn-primary" onclick="getnext()">Next Customer</button>
+		<div>
+			<label id="result"></label>
+		</div>
+  	</div>
+</body>
+</html>

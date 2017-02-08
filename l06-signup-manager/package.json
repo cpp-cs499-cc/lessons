@@ -1,17 +1,14 @@
 {
-  "name": "l04-waittime-dynamodb-node",
+  "name": "l06-signup-manager",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.9.0",
-    "express": "^4.14.1",
-    "request": "^2.79.0",
-    "xml2js": "^0.4.17"
+    "aws-sdk": "^2.9.0"
   }
 }

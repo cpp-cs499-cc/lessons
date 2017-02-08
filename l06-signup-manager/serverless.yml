@@ -1,0 +1,47 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: signup-queue-service # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  region: us-west-1
+
+# you can add statements to the Lambda function's IAM Role here
+  iamRoleStatements:
+   - Effect: "Allow"
+     Action:
+       - "sqs:*"
+     Resource: "*"
+   - Effect: "Allow"
+     Action:
+       - "ses:*"
+     Resource: "*"
+   
+functions:
+  signup:
+    handler: handler.signup
+    events:
+      - http:
+         path: signup/{name}/{group}
+         method: post
+         cors: true
+
+  getnext:
+    handler: handler.getnext
+    events:
+      - http:
+         path: getnext
+         method: get    
+         cors: true     

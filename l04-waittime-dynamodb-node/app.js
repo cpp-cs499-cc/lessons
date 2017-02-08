@@ -2,6 +2,9 @@
 	var parseString = require('xml2js').parseString;
 	var AWS = require('aws-sdk');
 
+	var express = require('express')
+	var app = express()
+
 	AWS.config.update({
 	  region: "us-west-1"
 	});
@@ -18,6 +21,7 @@
 			    var items = result.rss.channel[0].item;
 			    for(var i = 0; i < items.length; i++) {
 			    	console.log(items[i].title[0], items[i].description[0]);
+			    	putItem(items[i].title[0], items[i].description[0]);
 			    }
 			});
 		  }
@@ -44,17 +48,15 @@
 		});				
 	}
 
-	function queryWaitingtime(rideName) {
+	function queryWaitingtime(rideName, res) {
 		var params = {
 		    TableName : table,
-		    KeyConditionExpression: "#key = :inputName and #time >= :timestamp",
+		    KeyConditionExpression: "#key = :inputName",
 		    ExpressionAttributeNames:{
-		        "#key": "rideName",
-		        "#time": "timestamp",
+		        "#key": "rideName"
 		    },
 		    ExpressionAttributeValues: {
-		        ":inputName":rideName,
-		        ":timestamp":1485817556363
+		        ":inputName":rideName
 		    }
 		};
 
@@ -66,8 +68,21 @@
 		        data.Items.forEach(function(item) {
 		            console.log(item);
 		        });
+		        res.send(data.Items);
 		    }
 		});	
 	}
 
-	queryWaitingtime('Special Effects Show');
+	app.get('/fetch', function (req, res) {
+		fetchWaitingtimes();
+	  	res.send('OK');
+	})
+
+	app.get('/query', function (req, res) {
+		queryWaitingtime(req.query.name, res);	  	
+	})
+
+	app.listen(3000, function () {
+	  console.log('Example app listening on port 3000!')
+	})
+	
