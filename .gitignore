@@ -1,3 +1,9 @@
+**/.classpath
+**/.project
+**/.settings/
+.metadata/
+.recommenders/
+RemoteSystemsTempFiles/
 **/.serverless
 **/.DS_Store
 **/node_modules

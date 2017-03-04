@@ -1,0 +1,73 @@
+<html ng-app="SearchApp">
+<head>
+	<title></title>
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+ 
+  	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+  	<script type="text/javascript">
+  		angular.module('SearchApp', [])
+		   .controller('SearchController', function($http, $scope) {		   	
+		       $scope.search = function search() {
+		  			var searchterm = $('#groupinput').val();
+
+		  			$http.get("http://localhost:3000/search?q=" + searchterm)
+		  				.then(function(data) {
+		  					console.log(data);
+		  					if (data.data.hits) {
+			  					for(var i = 0; i<data.data.hits.hits.length; i++ ) {
+			  						data.data.hits.hits[i]._source.body = null;
+			  					}
+			  					//$scope.suggestions = data.data.suggest.didYouMean;
+			  				} else {			  					
+			  					//$scope.suggestions = data.data.suggest.didYouMean;
+			  				}
+			  				}, function(err){
+
+			  				});		  	
+		  		}
+		});  		
+  	</script>
+</head>
+
+<body ng-controller="SearchController" >
+	<div class="container-fluid">
+		<h3>Search Books</h3>
+		<div class="form-inline">
+		  	<input id="groupinput" class="form-control" type="text" name="group">
+		  	<button class="btn btn-primary" ng-click="search()">Search</button>
+	  	</div>
+  	</div>
+  	
+  	<br>
+
+  	<div class="container-fluid">
+  		<h5>Did you mean?</h5>
+  		<table class="table table-bordered table-striped">
+		  <tr ng-repeat="x in suggestions">
+		    <td>{{ x.text }}</td>		    
+		  </tr>
+		</table>
+  	</div>
+
+  	<div class="container-fluid">
+  		<table class="table table-bordered table-striped">
+		  <tr ng-repeat="x in result">
+		    <td>{{ x._source.id }}</td>		    
+		    <td>{{ x._score }}</td>		    
+		    <td>{{ x._source.title }}</td>
+		    <td>{{ x._source }}</td>
+		    <td><a href="https://search-myreviews-efkblmewvmkqu4j7dfkipsxqhy.us-west-1.es.amazonaws.com/499-books/book/{{ x._source.id }}">Full Text</a></td>
+		  </tr>
+		</table>
+  	</div>
+</body>
+
+</html>
